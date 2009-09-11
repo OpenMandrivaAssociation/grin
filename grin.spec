@@ -1,6 +1,6 @@
 %define name grin
 %define version  1.1.1
-%define release %mkrel 2
+%define release %mkrel 3
 
 Summary: A grep-like program for searching directories full of source code
 Name: %{name}
