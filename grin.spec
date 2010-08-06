@@ -1,19 +1,21 @@
-%define name grin
-%define version  1.1.1
-%define release %mkrel 3
+%define name	grin
+%define version 1.2
+%define release %mkrel 1
 
-Summary: A grep-like program for searching directories full of source code
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: %{name}-%{version}.tar.gz
-License: BSD
-Group: Text tools
-Url: https://svn.enthought.com/enthought/wiki/Grin
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Requires: python-argparse
-BuildRequires: python-devel, python-argparse, python-setuptools
-BuildArch: noarch
+Summary:        A grep-like program for searching directories full of source code
+Name:           %{name}
+Version:        %{version}
+Release:        %{release}
+Source0:        %{name}-%{version}.tar.gz
+License:        BSD
+Group:          Text tools
+Url:            http://pypi.python.org/pypi/grin/
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildArch:      noarch
+Requires:       python-argparse >= 1.1
+BuildRequires:  python-argparse >= 1.1, python-setuptools
+BuildRequires:	python-nose >= 0.10
+%py_requires -d
 
 %description
 Grin is a tool for searching through directories full of source code. Although
@@ -35,7 +37,10 @@ similar to grep, it has a number of unique features:
 
 %install
 %__rm -rf %{buildroot}
-%__python setup.py install --root=%{buildroot} --record=FILELIST
+PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILELIST
+
+%check
+nosetests
 
 %clean
 %__rm -rf %{buildroot}
