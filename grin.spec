@@ -1,19 +1,33 @@
 %define name	grin
 %define version 1.2.1
-%define release %mkrel 2
+%define	rel		2
+%if %mdkversion	< 201100
+%define release	%mkrel %{rel}
+%else
+%define release %{rel}
+%endif
+
+%if %{_use_internal_dependency_generator}
+%define __noautoreq 'pythonegg\\(argparse\\)'
+%else
+%define _requires_exceptions pythonegg(argparse)
+%endif
 
 Summary:        A grep-like program for searching directories full of source code
 Name:           %{name}
 Version:        %{version}
 Release:        %{release}
-Source0:        %{name}-%{version}.tar.gz
+Source0:		http://pypi.python.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
 License:        BSD
 Group:          Text tools
 Url:            http://pypi.python.org/pypi/grin/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:      noarch
-Requires:       python-argparse >= 1.1
-BuildRequires:  python-argparse >= 1.1, python-setuptools
+%if %mdkversion < 201100
+Requires:		python-argparse >= 1.1
+BuildRequires:  python-argparse >= 1.1
+%endif
+BuildRequires:	python-setuptools
 BuildRequires:	python-nose >= 0.10
 %py_requires -d
 
@@ -37,7 +51,7 @@ similar to grep, it has a number of unique features:
 
 %install
 %__rm -rf %{buildroot}
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILELIST
+PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot}
 
 %check
 nosetests
@@ -45,7 +59,8 @@ nosetests
 %clean
 %__rm -rf %{buildroot}
 
-%files -f FILELIST
+%files 
 %defattr(-,root,root)
 %doc *.txt examples/
-
+%_bindir/%{name}*
+%py_sitedir/%{name}*
