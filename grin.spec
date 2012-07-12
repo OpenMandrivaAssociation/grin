@@ -1,6 +1,6 @@
 %define name	grin
 %define version 1.2.1
-%define	rel		2
+%define	rel		3
 %if %mdkversion	< 201100
 %define release	%mkrel %{rel}
 %else
