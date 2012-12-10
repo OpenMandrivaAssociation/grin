@@ -64,3 +64,42 @@ nosetests
 %doc *.txt examples/
 %_bindir/%{name}*
 %py_sitedir/%{name}*
+
+
+%changelog
+* Thu Jul 12 2012 Lev Givon <lev@mandriva.org> 1.2.1-3
++ Revision: 809061
+- Bump to rebuild.
+- Remove explicit requirement of python-argparse in 2011 and later.
+
+* Sun Oct 31 2010 Funda Wang <fwang@mandriva.org> 1.2.1-2mdv2011.0
++ Revision: 590804
+- rebuild for py2.7
+
+* Wed Oct 27 2010 Lev Givon <lev@mandriva.org> 1.2.1-1mdv2011.0
++ Revision: 589595
+- Update to 1.2.1.
+
+* Fri Aug 06 2010 Lev Givon <lev@mandriva.org> 1.2-1mdv2011.0
++ Revision: 566778
+- Update to 1.2.
+
+* Fri Sep 11 2009 Thierry Vignaud <tv@mandriva.org> 1.1.1-3mdv2010.0
++ Revision: 437815
+- rebuild
+
+* Tue Jan 06 2009 Funda Wang <fwang@mandriva.org> 1.1.1-2mdv2009.1
++ Revision: 325579
+- rebuild
+
+* Wed Dec 10 2008 Lev Givon <lev@mandriva.org> 1.1.1-1mdv2009.1
++ Revision: 312530
+- Update to 1.1.1.
+
+* Thu Jul 17 2008 Lev Givon <lev@mandriva.org> 1.1-1mdv2009.0
++ Revision: 237805
+- import grin
+
+
+* Thu Jul 17 2008 Lev Givon <lev@mandriva.org> 1.1-1mdv2008.1
+- Package for Mandriva.
