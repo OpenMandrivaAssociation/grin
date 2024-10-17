@@ -20,7 +20,7 @@ Release:        %{release}
 Source0:		http://pypi.python.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
 License:        BSD
 Group:          Text tools
-Url:            http://pypi.python.org/pypi/grin/
+Url:            https://pypi.python.org/pypi/grin/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:      noarch
 %if %mdkversion < 201100
